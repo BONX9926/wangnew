@@ -1,17 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>ข้อมูลสถานที่</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="scanCode(111)">
+        <!-- <ion-icon name="qr-scanner"></ion-icon> -->
+        <img src="assets/imgs/qr-code.png"/>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+    
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="card-background-page">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-card *ngFor="let item of items" (click)="goToOtherPage(item)">
+    <img src="assets/imgs/{{ item.images[0] }}"/>
+    <div class="card-title">{{ item.title }}</div>
+  </ion-card>
 </ion-content>
