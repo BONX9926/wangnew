@@ -17,11 +17,11 @@ export class DetailPage {
   ) {
     this.wang = this.navParams.get('item')
     this.images = this.wang.images
-    console.log(this.images);
     
   }
   
   navigator_method(lat,lng){
+    //ใช้ในการนำทางจากปุ่ม
     this.launchNavigator.navigate([lat, lng])
       .then(
         success => console.log('Launched navigator'),

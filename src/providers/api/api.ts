@@ -14,7 +14,8 @@ export class ApiProvider {
   }
   getWang() {
     return new Promise( (resolve,reject) => {
-      this.http.get('http://nisakorn.com/student/chanika/index.php/api/getwang')
+      this.http.get('assets/data.json')
+      // this.http.get('http://nisakorn.com/student/chanika/index.php/api/getwang')
       .map(res => res.json())
       .subscribe((data: any) => {
         resolve(data)
