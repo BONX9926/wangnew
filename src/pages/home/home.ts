@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { DetailPage } from '../detail/detail';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -16,18 +16,19 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public Api: ApiProvider,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    private alertCtrl: AlertController
   ) {
+
     this.initializeItems();
   }
 
   initializeItems() {
     this.Api.getWang().then( (data: any) => {
       this.items = data;
-      // console.log('222',data);
-      
-    })   
+    }) 
   }
+
   getItems(ev: any) {
 
     let val = ev.target.value;
@@ -52,8 +53,13 @@ export class HomePage {
       this.wangFound = true;
       this.navCtrl.push(DetailPage, { item: this.selectedWang })
     } else {
-      this.wangFound = false;
-
+      // this.wangFound = false;
+      const alert = this.alertCtrl.create({
+        title: 'Not Found!',
+        subTitle: 'ไม่พบข้อมูล',
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }, (err) => {
 

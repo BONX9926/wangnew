@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ApiProvider } from '../../providers/api/api';
 
 declare var google:any;
 
@@ -11,19 +12,28 @@ declare var google:any;
 export class AboutPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  start = '13.7500301,100.4890995';
-  end = '13.7500301,100.4890995';
+  start = '13.750367,100.491308';
+  end = '13.7500299,100.4825334';
   mode = 'DRIVING';
   startlat: any;
   endlng: any;
+  items: Array<any>;
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController,private geolocation: Geolocation) {
-
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController,private geolocation: Geolocation, public Api: ApiProvider) {
+    this.initializeItems()
   }
 
   ionViewDidLoad(){
     this.initMap();
+  }
+
+  initializeItems() {
+    this.Api.getWang().then( (data: any) => {
+      this.items = data;
+    }).then(() => {
+      this.initMap();
+    })
   }
 
   initMap() {
@@ -35,6 +45,7 @@ export class AboutPage {
     this.directionsDisplay.setMap(this.map);
     this.directionsDisplay.setPanel(document.getElementById('right-panel'));
   }
+
   ionViewWillEnter(){
     this.geolocation.getCurrentPosition().then((resp) => {
       // resp.coords.latitude

@@ -3,57 +3,11 @@
     <b>ต้นทาง: </b>
     <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
       <option value="{{startlat}},{{endlng}}">ตำแหน่งปัจุบัน</option>
-      <option value="13.7500301,100.4890995">พระบรมหาราชวัง</option>
-      <option value="13.7500299,100.4825334">พระราชวังเดิม</option>
-      <option value="13.7757799,100.4980087">พระราชวังบวรสถานมงคล</option>
-      <option value="13.7570678,100.4843034">พระราชวังบวรสถานภิมุข</option>
-      <option value="13.7526495,100.4870796">วังท่าพระ</option>
-      <option value="13.7468985,100.4893578">วังริมวัดโพธิ์</option>
-      <option value="13.7459022,100.4944807">วังบ้านหม้อ</option>
-      <option value="13.7579843,100.5112676">วังริมคลองบางลำพู</option>
-      <option value="13.7504499,100.4921814">พระราชวังสราญรมย์</option>
-      <option value="13.7435651,100.4945436">วังบูรพาภิรมย์</option>
-      <option value="13.7526412,100.4972033">วังกรมพระนราธิปประพันธ์พงศ์</option>
-      <option value="13.7684579,100.4974962">วังบางขุนพรหม</option>
-      <option value="13.7765053,100.500532">พระราชวังดุสิต</option>
-      <option value="13.7769632,100.5065958">สวนสุนันทา</option>
-      <option value="13.7686261,100.5329005">พระราชวังพญาไท</option>
-      <option value="13.7706389,100.50228">วังนางเลิ้ง</option>
-      <option value="13.7675566,100.5081755">ตำหนักจิตรลดา วังปารุสกวัน</option>
-      <option value="13.7680542,100.5081755">วังปารุสกวัน</option>
-      <option value="14.065319,100.2616631">วังจันทรเกษม</option>
-      <option value="13.7556527,100.510704">วังวรดิศ</option>
-      <option value="13.767897,100.5009637">วังเทวะเวสม์</option>
-      <option value="13.7211939,100.5515219">ตำหนักปลายเนิน</option>
-      <option value="13.7568933,100.5354011">วังสวนผักกาด</option>
-      <option value="13.7482025,100.5310779">วังสระปทุม</option>
+      <option *ngFor="let item of items" value="{{item.lat}},{{item.lng}}">{{item.title}}</option>
     </select><br>
     <b>ปลายทาง: </b>
     <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">
-      <option value="13.7500301,100.4890995">พระบรมหาราชวัง</option>
-      <option value="13.7500299,100.4825334">พระราชวังเดิม</option>
-      <option value="13.7757799,100.4980087">พระราชวังบวรสถานมงคล</option>
-      <option value="13.7570678,100.4843034">พระราชวังบวรสถานภิมุข</option>
-      <option value="13.7526495,100.4870796">วังท่าพระ</option>
-      <option value="13.7468985,100.4893578">วังริมวัดโพธิ์</option>
-      <option value="13.7459022,100.4944807">วังบ้านหม้อ</option>
-      <option value="13.7579843,100.5112676">วังริมคลองบางลำพู</option>
-      <option value="13.7504499,100.4921814">พระราชวังสราญรมย์</option>
-      <option value="13.7435651,100.4945436">วังบูรพาภิรมย์</option>
-      <option value="13.7526412,100.4972033">วังกรมพระนราธิปประพันธ์พงศ์</option>
-      <option value="13.7684579,100.4974962">วังบางขุนพรหม</option>
-      <option value="13.7765053,100.500532">พระราชวังดุสิต</option>
-      <option value="13.7769632,100.5065958">สวนสุนันทา</option>
-      <option value="13.7686261,100.5329005">พระราชวังพญาไท</option>
-      <option value="13.7706389,100.50228">วังนางเลิ้ง</option>
-      <option value="13.7675566,100.5081755">ตำหนักจิตรลดา วังปารุสกวัน</option>
-      <option value="13.7680542,100.5081755">วังปารุสกวัน</option>
-      <option value="14.065319,100.2616631">วังจันทรเกษม</option>
-      <option value="13.7556527,100.510704">วังวรดิศ</option>
-      <option value="13.767897,100.5009637">วังเทวะเวสม์</option>
-      <option value="13.7211939,100.5515219">ตำหนักปลายเนิน</option>
-      <option value="13.7568933,100.5354011">วังสวนผักกาด</option>
-      <option value="13.7482025,100.5310779">วังสระปทุม</option>
+      <option *ngFor="let item of items" value="{{item.lat}},{{item.lng}}">{{item.title}}</option>
     </select>
     <br>
     <b>เดินทางโดย: </b>

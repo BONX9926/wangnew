@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>ข้อมูลสถานที่</ion-title>
+    <ion-title><ion-searchbar (ionInput)="getItems($event)"></ion-searchbar></ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="scanCode(111)">
+      <button ion-button icon-only (click)="scanCode()">
         <img src="assets/imgs/qr-code.png"/>
       </button>
     </ion-buttons>
@@ -11,7 +11,6 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-card *ngFor="let item of items" (click)="goToOtherPage(item)">
     <img src="assets/imgs/{{ item.images[0] }}"/>
     <div class="card-title">{{ item.title }}</div>
